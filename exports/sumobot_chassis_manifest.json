@@ -40,7 +40,7 @@
     "wedge_width": 160.0,
     "wedge_height": 16.0,
     "wedge_back_flat": 8.0,
-    "wedge_nose_height": 1.5,
+    "wedge_nose_height": 0.5,
     "motor_mount_x": -18.0,
     "motor_length": 70.0,
     "motor_width": 23.0,

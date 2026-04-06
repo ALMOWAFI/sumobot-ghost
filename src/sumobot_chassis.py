@@ -26,7 +26,7 @@ class ChassisParams:
     wedge_width: float = 160.0
     wedge_height: float = 16.0
     wedge_back_flat: float = 8.0
-    wedge_nose_height: float = 1.5
+    wedge_nose_height: float = 0.5
 
     motor_mount_x: float = -18.0
     motor_length: float = 70.0
