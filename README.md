@@ -1,48 +1,105 @@
-# Sumo Bot CAD
+# Sumobot Ghost
 
-This project uses `build123d` on Python 3.11 because it is available locally now, supports a code-first parametric workflow, and exports both `STEP` and `STL`.
+![Current chassis preview](exports/sumobot_chassis_preview.png)
 
-## Project layout
+`Sumobot Ghost` is a compact sumo-bot chassis project focused on one thing: turning a rough first concept into a mechanically credible fighting robot.
 
-- `src\` contains the CAD source
-- `exports\` contains generated `STEP`, `STL`, and manifest files
-- `tools\` contains automation scripts for FreeCAD
-- `openscad\` contains the OpenSCAD preview scene
-- `references\` contains the original design brief
-- `references\sumobot_gap_matrix.md` compares this design against real external sumo-bot references
-- `references\current_design_enhancement_brief.md` narrows those references into improvements for the current chassis
-- `checklists\` contains the build and validation workflow
-- `.venv\` contains the local Python environment
+This repo is not just a CAD dump. It tracks:
 
-## Outputs
+- the current chassis geometry
+- the design reasoning behind it
+- the mass and ballast model
+- the comparison against stronger reference bots
+- the validation workflow needed before any serious redesign
 
-Run:
+## What This Robot Is Right Now
 
-```powershell
-.\run_export.ps1
-```
+The current chassis is a serious prototype for the parts on hand, not the final competition architecture.
 
-Estimate assembled mass from the current CAD plus component assumptions:
+It is built around:
 
-```powershell
-.\run_mass_estimate.ps1
-```
+- `TT` DC gear motors
+- `65 x 26 mm` wheels
+- `ESP32 DevKit V1`
+- `LM2596`
+- `7.4V` battery
+- `QTR-8RC` line sensor array
+- `VL53L0X` front sensor
+- internal front ballast bays with printable inserts
 
-Import the generated STEP into a native FreeCAD document:
+Current envelope and mass direction:
 
-```powershell
-.\run_freecad_import.ps1
-```
+- overall envelope: `188 x 168 x 32 mm`
+- estimated assembled mass without ballast inserts loaded: about `378 to 456 g`
+- estimated assembled mass with the standard `70 g` ballast load and `TB6612` allowance: about `453 to 533 g`
 
-Generate an OpenSCAD preview PNG from the exported STL:
+Detailed mass report:
+- [sumobot_mass_estimate.md](exports/sumobot_mass_estimate.md)
 
-```powershell
-.\run_openscad_preview.ps1
-```
+## What The Design Tries To Achieve
 
-If the imported FreeCAD model opens but the viewport looks empty, use `View -> Fit all` once. The file contains a single imported solid body.
+- low front wedge for pushing
+- protected internal packaging instead of loose component placement
+- service access for wiring, switch, and programming
+- tunable front-half ballast without blocking the attack edge
+- replaceable rear skid
+- clean upgrade path to stronger motors and better wheels later
 
-Generated files land in `exports\`:
+## Current Design Highlights
+
+- integrated wedge nose
+- motor cradles with guides, stops, and strap paths
+- battery bay with cable exit logic
+- ESP32 and power-module retention features
+- sensor mounts in the front module
+- wire trenches, pass-throughs, and anchor points
+- guarded rocker-switch pocket
+- printable ballast inserts for standard `1/4 oz` steel weight segments
+
+Main source:
+- [src/sumobot_chassis.py](src/sumobot_chassis.py)
+
+## What Still Matters Most
+
+The biggest open questions are mechanical, not software:
+
+- exact TT motor shaft datum
+- real wheel clearance and wheel exposure
+- front sensor height and protection
+- how much ballast the current drivetrain can actually use
+- whether the current retention features survive impact loads
+
+Those are the questions that decide whether this chassis is correct.
+
+## Best Files To Open First
+
+If you want the essence of the project, start here:
+
+- [exports/sumobot_chassis_preview.png](exports/sumobot_chassis_preview.png)
+- [src/sumobot_chassis.py](src/sumobot_chassis.py)
+- [exports/sumobot_mass_estimate.md](exports/sumobot_mass_estimate.md)
+- [references/sumobot_gap_matrix.md](references/sumobot_gap_matrix.md)
+- [references/current_design_enhancement_brief.md](references/current_design_enhancement_brief.md)
+- [checklists/sumobot_validation_checklist.md](checklists/sumobot_validation_checklist.md)
+
+## Repo Structure
+
+- `src/`
+  source CAD and parametric chassis logic
+- `exports/`
+  generated CAD files, previews, manifest, and mass reports
+- `references/`
+  design brief, comparison work, and enhancement reasoning
+- `checklists/`
+  validation workflow and test logging
+- `tools/`
+  supporting scripts such as FreeCAD import and mass estimation
+- `openscad/`
+  preview scene
+
+## Key Outputs
+
+Generated files in `exports/`:
 
 - `sumobot_chassis.step`
 - `sumobot_chassis.stl`
@@ -55,91 +112,72 @@ Generated files land in `exports\`:
 - `sumobot_chassis_manifest.json`
 - `sumobot_mass_estimate.json`
 - `sumobot_mass_estimate.md`
-- `checklists\sumobot_validation_checklist.md`
-- `checklists\sumobot_validation_log.csv`
 
-## Explicit assumptions
+## Current Enhancement Direction
 
-- Chassis base footprint: `182 x 168 mm`.
-- Actual overall envelope with switch guard: `188 x 168 mm`, still under the `220 x 220 mm` rule.
-- Motor package: `TT DC gear motor`, `70 x 23 x 18 mm`.
-- Remaining motor assumption: the TT shaft centerline is treated as `10.5 mm` above the motor mount floor.
-- Wheel target: `65 mm` diameter, `26 mm` width.
-- Battery package: `7.4V Li-ion`, `70 x 40 x 20 mm`.
-- ESP32 mount: tray sized for `ESP32 DevKit V1`, `55 x 28 x 15 mm`.
-- Power mount: tray sized for `LM2596`, `45 x 22 x 15 mm`.
-- Front sensor support: `QTR-8RC` shelf and `VL53L0X` shelf are included.
-- Front ballast support: mirrored ballast bays sit inside the front half behind the sensor deck.
-- Ballast insert reference: [sumobot_ballast_insert.step](C:\Users\almwa\OneDrive%20-%20Constructor%20University\Desktop\sumobot-cad\exports\sumobot_ballast_insert.step) is sized for `1/4 oz` steel wheel-weight segments, `5` segments per insert, `10` total across the robot.
-- Switch slot: rear-access `KCD1` rocker-switch cutout, `19 x 13 mm`.
-- Rear skid: two-hole `M3` mounting pattern on the rear bridge.
+Based on the reference comparison, the best improvements for the current chassis are:
 
-## Included features
+- tighten motor retention around the real TT motor geometry
+- reduce wheel exposure once the real fit is confirmed
+- protect the front module without making the nose bulky
+- keep ballast behind the sensor deck and tune it in steps
+- preserve the current packaging architecture while preparing for stronger future hardware
 
-- Integrated front wedge with a conservative nose height target of `1.5 mm`
-- Left and right TT motor cradles with inner guides, end stops, and strap slots
-- Battery bay with exact-fit rails and strap slots
-- ESP32 DevKit V1 tray
-- LM2596 tray
-- QTR-8RC front shelf
-- VL53L0X front shelf
-- Paired internal ballast bays behind the front sensor deck
-- Separate printable ballast insert sized for standard `1/4 oz` steel segments
-- Shallow floor wire trenches linking motors, battery, ESP32, buck converter, and front sensors
-- Small cable anchor slots for tidy zip-tie or thread lashing
-- Dedicated motor lead pass-throughs and board-side wire pass windows
-- ESP32 end-capture tabs plus an enlarged USB service pocket for programming cable access
-- Adjustable LM2596 mounting slots in the tray floor for screw retention when the module hole pattern matches
-- Battery side reliefs and a rear-left battery lead notch aimed into the power trench
-- Inner board service reliefs so the ESP32 and LM2596 can be seated and removed without prying against full-height rails
-- Sensor mounting slots for the QTR-8RC and VL53L0X shelves
-- Guarded rocker-switch pocket with rear ribs and a top roof
-- Separate low-profile rear skid wear part with slotted M3 mounting holes
-- Rear switch slot
-- Rear skid mount pattern
+Best summary of that work:
+- [references/current_design_enhancement_brief.md](references/current_design_enhancement_brief.md)
 
-## Print notes
+## Validation Before Redesign
 
-- Material: `PETG` for the first functional print. Move to nylon or CF-reinforced filament only after fit checks.
-- Rear skid: print a temporary skid in `PETG`, but plan to remake [sumobot_rear_skid.step](C:\Users\almwa\OneDrive%20-%20Constructor%20University\Desktop\sumobot-cad\exports\sumobot_rear_skid.step) in `PTFE` or `UHMW` for lower drag.
-- Orientation: print the chassis floor-down so the wedge and wall geometry keep the assembly stable.
-- Supports: likely only needed under the rear bridge and any especially aggressive wedge nose on your slicer profile.
-- Infill: start around `35%` gyroid or cubic with `4 to 5` walls.
-- Hardware: use `M3` fasteners, cable ties or hook-and-loop straps, and heat-set inserts only after confirming local wall thicknesses still match your chosen insert.
+This project should not jump into blind redesign.
 
-## Assembly order
+Use the checklist:
+- [checklists/sumobot_validation_checklist.md](checklists/sumobot_validation_checklist.md)
 
-1. Install the motors and route the leads through the side pass-throughs into the floor trenches.
-2. Mount the rear skid wear part.
-3. Place the battery and route its leads through the battery notch toward the buck converter zone.
-4. Install the LM2596 and power wiring.
-5. Install the ESP32 and keep the USB side aligned with the service pocket.
-6. Mount the front sensors and pull their wires through the front sensor slot into the main trench.
-7. Print `2x` ballast inserts and drop one into each ballast bay.
-8. Start with `10x` standard `1/4 oz` steel wheel-weight segments total, `5` per insert, then drive-test before changing the load.
+Use the log:
+- [checklists/sumobot_validation_log.csv](checklists/sumobot_validation_log.csv)
 
-## Mass model
+The correct test sequence is:
 
-- The mass tool uses the actual CAD volume of the chassis and rear skid, then converts that volume into a PETG mass estimate.
-- It also reports the printable ballast-insert mass and the standard `10`-segment steel loadout for the insert pair.
-- It reports both a solid-PETG equivalent and a realistic printed range for the chassis.
-- Component masses are a mix of vendor specs and explicit engineering allowances where your exact purchased part is still generic.
-- The two biggest current mass uncertainties are the exact `65 mm` wheel variant and the exact `7.4 V` battery pack.
-- The current electronics list still needs a locked motor-driver board, so the report includes a separate `TB6612`-class allowance instead of pretending that detail is fixed.
-- The report also estimates how optional front ballast shifts the robot's x-axis center of mass.
+1. verify motor fit and axle height
+2. verify wheel contact and opening alignment
+3. verify battery, wiring, and switch retention
+4. verify sensor position
+5. test ballast at `0 g`, `35 g`, and `70 g`
+
+## Tooling
+
+The source CAD is scripted and parametric, with exports for `STEP`, `STL`, and `FCStd`.
+
+Useful commands:
+
+```powershell
+.\run_export.ps1
+.\run_mass_estimate.ps1
+.\run_freecad_import.ps1
+.\run_openscad_preview.ps1
+```
+
+If the imported FreeCAD model looks empty, use `View -> Fit all`. The `FCStd` file contains an imported solid, not a native sketch-history model.
 
 ## Short BOM
 
 - `2x` TT DC gear motor
-- `2x` `65 x 26 mm` TT wheel
-- `1x` `7.4V Li-ion` battery
+- `2x` `65 x 26 mm` wheel
+- `1x` `7.4V` battery
 - `1x` `ESP32 DevKit V1`
-- `1x` `LM2596` buck converter
-- `1x` motor driver board, still to be locked
+- `1x` `LM2596`
+- `1x` motor driver board
 - `1x` `KCD1` rocker switch
 - `1x` `QTR-8RC`
 - `1x` `VL53L0X`
 - `2x` printed ballast inserts
 - `10x` standard `1/4 oz` steel wheel-weight segments
-- `2x` M3 skid fasteners
-- `6 to 10x` cable ties or hook-and-loop straps for battery, motors, and PCBs
+
+## Current Position
+
+This repo is best understood as a well-structured prototype path:
+
+- good enough to reason about seriously
+- honest about what is still uncertain
+- ready for physical validation
+- ready to evolve into a stronger chassis when the upgraded drivetrain arrives
