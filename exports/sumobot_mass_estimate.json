@@ -1,0 +1,224 @@
+{
+  "generated_at_utc": "2026-04-06T01:24:07.839377+00:00",
+  "legal_mass_limit_g": 1000.0,
+  "cad_metrics": {
+    "outer_envelope_mm": {
+      "length": 188.0,
+      "width": 168.0,
+      "height": 32.0
+    },
+    "chassis_x_center_of_mass_mm": 5.857,
+    "chassis_volume_mm3": 222003.83,
+    "rear_skid_volume_mm3": 1476.0,
+    "ballast_insert_volume_mm3": 1646.048,
+    "chassis_solid_petg_mass_g": 281.94,
+    "rear_skid_solid_petg_mass_g": 1.87,
+    "ballast_insert_solid_petg_mass_g": 2.09,
+    "printed_chassis_mass_g_range": {
+      "low": 140.97,
+      "high": 169.17
+    },
+    "printed_rear_skid_mass_g_range": {
+      "low": 1.69,
+      "high": 1.87
+    },
+    "printed_ballast_insert_mass_g_range": {
+      "low": 1.88,
+      "high": 2.09
+    },
+    "front_ballast_pair_internal_volume_mm3": 15288.0,
+    "front_ballast_pair_capacity_g": {
+      "mild_steel_full_fill": 120.01,
+      "lead_full_fill": 173.37,
+      "standard_1_4oz_segment_total": 70.0
+    },
+    "front_ballast_standard_segment_count_total": 10
+  },
+  "required_items": [
+    {
+      "name": "Printed chassis (PETG)",
+      "quantity": 1,
+      "unit_mass_g_low": 140.97,
+      "unit_mass_g_high": 169.17,
+      "basis": "CAD volume + material-density estimate",
+      "note": "Uses actual CAD volume and an effective material fraction of 50% to 60% for a 35% infill, 4-5 wall functional print.",
+      "source": "https://um-support-files.ultimaker.com/materials/2.85mm/sds/PETG/UM_PETG_KR_en_SDSv1.0.pdf",
+      "total_mass_g_low": 140.97,
+      "total_mass_g_high": 169.17
+    },
+    {
+      "name": "Rear skid wear part (PETG)",
+      "quantity": 1,
+      "unit_mass_g_low": 1.69,
+      "unit_mass_g_high": 1.87,
+      "basis": "CAD volume + material-density estimate",
+      "note": "Thin skid prints almost solid in practice, so the effective material fraction is set to 90% to 100%.",
+      "source": "https://um-support-files.ultimaker.com/materials/2.85mm/sds/PETG/UM_PETG_KR_en_SDSv1.0.pdf",
+      "total_mass_g_low": 1.69,
+      "total_mass_g_high": 1.87
+    },
+    {
+      "name": "TT DC gear motor",
+      "quantity": 2,
+      "unit_mass_g_low": 30.6,
+      "unit_mass_g_high": 30.6,
+      "basis": "vendor specification",
+      "note": "SunFounder TT motor reference, 70 x 22 x 18 mm body.",
+      "source": "https://docs.sunfounder.com/projects/3in1-kit-v2/en/latest/components/component_tt_motor.html",
+      "total_mass_g_low": 61.2,
+      "total_mass_g_high": 61.2
+    },
+    {
+      "name": "65 mm wheel",
+      "quantity": 2,
+      "unit_mass_g_low": 20.0,
+      "unit_mass_g_high": 31.5,
+      "basis": "vendor range",
+      "note": "Mass varies across 65 mm TT/BO wheel variants, so the range captures lightweight 65 x 26 mm wheels up to heavier 65 mm TT wheels.",
+      "source": "https://www.embeddinator.com/product/robot-wheel-65mm-for-dc-geared-motor | https://www.kiwi-electronics.com/en/thin-white-wheel-for-tt-motor-65mm-10319",
+      "total_mass_g_low": 40.0,
+      "total_mass_g_high": 63.0
+    },
+    {
+      "name": "7.4 V battery pack",
+      "quantity": 1,
+      "unit_mass_g_low": 87.0,
+      "unit_mass_g_high": 100.0,
+      "basis": "source-guided estimate",
+      "note": "Lower bound follows a 7.4 V 1500 mAh pack at 87 g; upper bound is an engineering allowance for a slightly bulkier 70 x 40 x 20 mm pack.",
+      "source": "https://myliontech.com/en/product/mylion-7-4v-1500mah-14500-lithium-ion-battery-pack/",
+      "total_mass_g_low": 87.0,
+      "total_mass_g_high": 100.0
+    },
+    {
+      "name": "ESP32 DevKit V1",
+      "quantity": 1,
+      "unit_mass_g_low": 10.0,
+      "unit_mass_g_high": 10.0,
+      "basis": "vendor specification",
+      "note": "Grobotronics product listing.",
+      "source": "https://grobotronics.com/esp32-development-board-devkit-v1.html?sl=en",
+      "total_mass_g_low": 10.0,
+      "total_mass_g_high": 10.0
+    },
+    {
+      "name": "LM2596 buck converter",
+      "quantity": 1,
+      "unit_mass_g_low": 11.23,
+      "unit_mass_g_high": 11.23,
+      "basis": "vendor specification",
+      "note": "43.2 x 21 x 14 mm module reference.",
+      "source": "https://www.microscale.net/products/lm2596-dc-dc-buck-converter",
+      "total_mass_g_low": 11.23,
+      "total_mass_g_high": 11.23
+    },
+    {
+      "name": "KCD1 rocker switch",
+      "quantity": 1,
+      "unit_mass_g_low": 4.0,
+      "unit_mass_g_high": 6.0,
+      "basis": "engineering estimate",
+      "note": "Small KCD1-family panel switches typically land in the low single-digit gram range; use a scale once the exact switch is in hand.",
+      "source": "https://abc-rc.pl/product-eng-16783-Przelacznik-kolyskowy-chwilowy-monostabilny-KCD1-21x15mm-ON-OFF-ON-250V-3PIN.html",
+      "total_mass_g_low": 4.0,
+      "total_mass_g_high": 6.0
+    },
+    {
+      "name": "QTR-8RC sensor array",
+      "quantity": 1,
+      "unit_mass_g_low": 3.09,
+      "unit_mass_g_high": 3.09,
+      "basis": "vendor specification",
+      "note": "Pololu weight without headers.",
+      "source": "https://www.pololu.com/product-info-merged/961",
+      "total_mass_g_low": 3.09,
+      "total_mass_g_high": 3.09
+    },
+    {
+      "name": "VL53L0X sensor",
+      "quantity": 1,
+      "unit_mass_g_low": 0.5,
+      "unit_mass_g_high": 0.5,
+      "basis": "vendor specification",
+      "note": "Pololu weight without headers.",
+      "source": "https://www.pololu.com/product/2490/specs",
+      "total_mass_g_low": 0.5,
+      "total_mass_g_high": 0.5
+    },
+    {
+      "name": "Fasteners, straps, hookup wire",
+      "quantity": 1,
+      "unit_mass_g_low": 18.0,
+      "unit_mass_g_high": 30.0,
+      "basis": "assembly allowance",
+      "note": "Covers skid screws, zip ties or straps, sensor leads, power wiring, and short interconnects. Motor wire pigtails are already included in the motor mass.",
+      "source": null,
+      "total_mass_g_low": 18.0,
+      "total_mass_g_high": 30.0
+    }
+  ],
+  "optional_items": [
+    {
+      "name": "Pair of ballast inserts (PETG)",
+      "quantity": 2,
+      "unit_mass_g_low": 1.88,
+      "unit_mass_g_high": 2.09,
+      "basis": "CAD volume + material-density estimate",
+      "note": "One insert per bay, sized for five 1/4 oz steel segments each.",
+      "source": "https://motionpro.com/product/08-0498",
+      "total_mass_g_low": 3.76,
+      "total_mass_g_high": 4.18
+    },
+    {
+      "name": "TB6612-class motor driver",
+      "quantity": 1,
+      "unit_mass_g_low": 1.5,
+      "unit_mass_g_high": 3.0,
+      "basis": "vendor range",
+      "note": "Use this allowance only if you install a small TB6612-class carrier. A larger driver board changes both mass and packaging.",
+      "source": "https://www.pololu.com/product/713/specs | https://www.robojunkies.com/products/tb6612fng-dual-channel-motor-driver-breakout",
+      "total_mass_g_low": 1.5,
+      "total_mass_g_high": 3.0
+    }
+  ],
+  "balance_scenarios": {
+    "no_front_ballast_x_com_mm": -0.91,
+    "with_standard_insert_70g_ballast_x_com_mm": 5.6,
+    "with_50g_front_ballast_x_com_mm": 3.94,
+    "with_100g_front_ballast_x_com_mm": 7.86,
+    "with_150g_front_ballast_x_com_mm": 11.1
+  },
+  "totals_g": {
+    "required_assembled_low": 377.68,
+    "required_assembled_high": 456.06,
+    "with_ballast_insert_pair_and_tb6612_low": 382.94,
+    "with_ballast_insert_pair_and_tb6612_high": 463.24,
+    "with_tb6612_class_driver_low": 379.18,
+    "with_tb6612_class_driver_high": 459.06,
+    "with_standard_inserted_70g_ballast_low": 452.94,
+    "with_standard_inserted_70g_ballast_high": 533.24,
+    "conservative_solid_plastic_with_tb6612_high": 571.84,
+    "mass_margin_to_1kg_with_tb6612_low": 540.94,
+    "mass_margin_to_1kg_with_tb6612_high": 620.82
+  },
+  "open_items": [
+    "The exact battery chemistry and capacity are still unspecified, so the battery remains the largest single mass uncertainty.",
+    "Wheel mass varies a lot between 65 mm variants, so the wheel pair is modeled as a range instead of a fixed value.",
+    "The current parts list still does not lock the motor-driver board; the optional TB6612-class allowance assumes a small breakout, not a heavy L298N-style board.",
+    "Front ballast capacity is a geometric maximum; the practical ballast mass depends on the slug shape and the chosen ballast material.",
+    "The standard wheel-weight insert is based on a 1/4 oz steel segment form factor; the segment thickness is an engineering inference from listed mass, face dimensions, and steel density."
+  ],
+  "sources": [
+    "https://docs.sunfounder.com/projects/3in1-kit-v2/en/latest/components/component_tt_motor.html",
+    "https://www.pololu.com/product-info-merged/961",
+    "https://www.pololu.com/product/2490/specs",
+    "https://grobotronics.com/esp32-development-board-devkit-v1.html?sl=en",
+    "https://www.microscale.net/products/lm2596-dc-dc-buck-converter",
+    "https://www.embeddinator.com/product/robot-wheel-65mm-for-dc-geared-motor",
+    "https://www.kiwi-electronics.com/en/thin-white-wheel-for-tt-motor-65mm-10319",
+    "https://myliontech.com/en/product/mylion-7-4v-1500mah-14500-lithium-ion-battery-pack/",
+    "https://motionpro.com/product/08-0498",
+    "https://www.pololu.com/product/713/specs",
+    "https://um-support-files.ultimaker.com/materials/2.85mm/sds/PETG/UM_PETG_KR_en_SDSv1.0.pdf"
+  ]
+}
