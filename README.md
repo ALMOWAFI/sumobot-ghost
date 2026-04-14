@@ -71,15 +71,9 @@ Files:
 
 ## Robot Name — GHOST Text
 
-The file `2_CHASSIS_normal/TapaSumo_GHOST_text.stl` is a raised text plate (90 x 20 x 4 mm) with the robot name **GHOST** on it.
+The file `2_CHASSIS_normal/TapaSumo_GHOST.stl` is the lid with **GHOST engraved directly into the top surface** — ready to print as one piece, no extra steps needed.
 
-How to use it:
-1. Open your slicer (Cura, PrusaSlicer, Bambu Studio, etc.)
-2. Load `TapaSumo.stl`
-3. Also load `TapaSumo_GHOST_text.stl`
-4. Place the text plate centered on top of the cover (flat face down)
-5. Use the slicer's merge/combine function so they print as one piece
-6. Print with the same settings as Group 2
+Use `TapaSumo_GHOST.stl` instead of `TapaSumo.stl`. Same print settings as Group 2.
 
 ---
 
