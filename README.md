@@ -69,6 +69,20 @@ Files:
 
 ---
 
+## Robot Name — GHOST Text
+
+The file `2_CHASSIS_normal/TapaSumo_GHOST_text.stl` is a raised text plate (90 x 20 x 4 mm) with the robot name **GHOST** on it.
+
+How to use it:
+1. Open your slicer (Cura, PrusaSlicer, Bambu Studio, etc.)
+2. Load `TapaSumo.stl`
+3. Also load `TapaSumo_GHOST_text.stl`
+4. Place the text plate centered on top of the cover (flat face down)
+5. Use the slicer's merge/combine function so they print as one piece
+6. Print with the same settings as Group 2
+
+---
+
 ## General Notes
 - Use PETG for all parts — do NOT use PLA (too brittle for competition)
 - Keep the gear tolerances tight — gears must mesh smoothly
